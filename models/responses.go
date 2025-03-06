@@ -175,3 +175,9 @@ type UseItem struct {
 	Item      Item      `json:"item"`
 	Character Character `json:"character"`
 }
+
+type NPCTransactionResponse struct {
+	Cooldown    Cooldown       `json:"cooldown"`
+	Transaction NPCTransaction `json:"transaction"`
+	Character   Character      `json:"character"`
+}
