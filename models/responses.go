@@ -170,3 +170,9 @@ type NPCTransactionResponse struct {
 	Transaction NPCTransaction `json:"transaction"`
 	Character   Character      `json:"character"`
 }
+
+type Consumable struct {
+	Cooldown  Cooldown  `json:"cooldown"`
+	Item      Item      `json:"item"`
+	Character Character `json:"character"`
+}
