@@ -160,3 +160,9 @@ type ActiveEvent struct {
 	Expiration   string    `json:"expiration"`
 	CreatedAt    string    `json:"created_at"`
 }
+
+type NPCTransactionResponse struct {
+	Cooldown    Cooldown       `json:"cooldown"`
+	Transaction NPCTransaction `json:"transaction"`
+	Character   Character      `json:"character"`
+}
