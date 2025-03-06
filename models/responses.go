@@ -89,34 +89,40 @@ type TaskCancelled struct {
 
 type TaskRewardData struct {
 	Cooldown  Cooldown   `json:"cooldown"`
-	Reward    TaskReward `json:"reward"`
+	Rewards   TaskReward `json:"rewards"`
 	Character Character  `json:"character"`
 }
 
-type BaseAchievement struct {
-	Name        string          `json:"name"`
-	Code        string          `json:"code"`
-	Description string          `json:"description"`
-	Points      int             `json:"points"`
-	Type        AchievementType `json:"type"`
-	Target      string          `json:"target"`
-	Total       int             `json:"total"`
+type Achievement struct {
+	Name        string            `json:"name"`
+	Code        string            `json:"code"`
+	Description string            `json:"description"`
+	Points      int               `json:"points"`
+	Type        AchievementType   `json:"type"`
+	Target      string            `json:"target"`
+	Total       int               `json:"total"`
+	Rewards     AchievementReward `json:"rewards"`
+}
+
+type AchievementReward struct {
+	Gold int `json:"gold"`
 }
 
 type TaskFull struct {
-	Code        string   `json:"code"`
-	Level       int      `json:"level"`
-	Type        TaskType `json:"type"`
-	MinQuantity int      `json:"min_quantity"`
-	MaxQuantity int      `json:"max_quantity"`
-	Skill       string   `json:"skill"`
+	Code        string     `json:"code"`
+	Level       int        `json:"level"`
+	Type        TaskType   `json:"type"`
+	MinQuantity int        `json:"min_quantity"`
+	MaxQuantity int        `json:"max_quantity"`
+	Skill       string     `json:"skill"`
+	Rewards     TaskReward `json:"rewards"`
 }
 
 type TaskRewardFull struct {
-	Code        string  `json:"code"`
-	MinQuantity int     `json:"min_quantity"`
-	MaxQuantity int     `json:"max_quantity"`
-	Odds        float32 `json:"odds"`
+	Code        string `json:"code"`
+	Rate        int    `json:"rate"`
+	MinQuantity int    `json:"min_quantity"`
+	MaxQuantity int    `json:"max_quantity"`
 }
 
 type GEItems struct {
@@ -128,21 +134,23 @@ type GEItems struct {
 }
 
 type Monster struct {
-	Name        string     `json:"name"`
-	Code        string     `json:"code"`
-	Level       int        `json:"level"`
-	Hp          int        `json:"hp"`
-	AttackFire  int        `json:"attack_fire"`
-	AttackEarth int        `json:"attack_earth"`
-	AttackWater int        `json:"attack_water"`
-	AttackAir   int        `json:"attack_air"`
-	ResFire     int        `json:"res_fire"`
-	ResEarth    int        `json:"res_earth"`
-	ResWater    int        `json:"res_water"`
-	ResAir      int        `json:"res_air"`
-	MinGold     int        `json:"min_gold"`
-	MaxGold     int        `json:"max_gold"`
-	Drops       []DropFull `json:"drops"`
+	Name           string     `json:"name"`
+	Code           string     `json:"code"`
+	Level          int        `json:"level"`
+	Hp             int        `json:"hp"`
+	AttackFire     int        `json:"attack_fire"`
+	AttackEarth    int        `json:"attack_earth"`
+	AttackWater    int        `json:"attack_water"`
+	AttackAir      int        `json:"attack_air"`
+	ResFire        int        `json:"res_fire"`
+	ResEarth       int        `json:"res_earth"`
+	ResWater       int        `json:"res_water"`
+	ResAir         int        `json:"res_air"`
+	CriticalStrike int        `json:"critical_strike"`
+	Effects        []Effect   `json:"effects"`
+	MinGold        int        `json:"min_gold"`
+	MaxGold        int        `json:"max_gold"`
+	Drops          []DropFull `json:"drops"`
 }
 
 type SingleItem struct {
@@ -152,11 +160,30 @@ type SingleItem struct {
 
 type MapSchema Destination
 
-type ActiveEvent struct {
+type Event struct {
 	Name         string    `json:"name"`
+	Code         string    `json:"code"`
 	Map          MapSchema `json:"map"`
 	PreviousSkin string    `json:"previous_skin"`
 	Duration     int       `json:"duration"`
 	Expiration   string    `json:"expiration"`
 	CreatedAt    string    `json:"created_at"`
+}
+
+type NPCTransactionResponse struct {
+	Cooldown    Cooldown       `json:"cooldown"`
+	Transaction NPCTransaction `json:"transaction"`
+	Character   Character      `json:"character"`
+}
+
+type Consumable struct {
+	Cooldown  Cooldown  `json:"cooldown"`
+	Item      Item      `json:"item"`
+	Character Character `json:"character"`
+}
+
+type Rest struct {
+	Cooldown   Cooldown  `json:"cooldown"`
+	HpRestored int       `json:"hp_restored"`
+	Character  Character `json:"character"`
 }
