@@ -154,9 +154,22 @@ type MapSchema Destination
 
 type ActiveEvent struct {
 	Name         string    `json:"name"`
+	Code         string    `json:"code"`
 	Map          MapSchema `json:"map"`
 	PreviousSkin string    `json:"previous_skin"`
 	Duration     int       `json:"duration"`
 	Expiration   string    `json:"expiration"`
 	CreatedAt    string    `json:"created_at"`
+}
+
+type EventMapSchema Movement
+
+type Event struct {
+	Name     string         `json:"name"`
+	Code     string         `json:"code"`
+	Maps     EventMapSchema `json:"maps"`
+	Skin     string         `json:"skin"`
+	Duration int            `json:"duration"`
+	Rate     int            `json:"rate"`
+	Content  MapContent     `json:"content"`
 }

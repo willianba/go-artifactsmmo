@@ -710,9 +710,31 @@ func (c *ArtifactsMMO) GetResource(code string) (*models.Resource, error) {
 }
 
 // Retrieve all events
-func (c *ArtifactsMMO) GetEvents(page int, size int) (*[]models.ActiveEvent, error) {
+func (c *ArtifactsMMO) GetAllEvents(page int, size int) (*[]models.Event, error) {
+	var ret []models.Event
+
+	req := api.NewRequest(c.Config).SetMethod("GET").SetURL(fmt.Sprintf("/events")).SetResultStruct(&ret)
+
+	if page != 0 {
+		req.SetParam("page", strconv.Itoa(page))
+	}
+
+	if size != 0 {
+		req.SetParam("size", strconv.Itoa(size))
+	}
+
+	_, err := req.Run()
+	if err != nil {
+		return nil, err
+	}
+
+	return &ret, nil
+}
+
+func (c *ArtifactsMMO) GetActiveEvents(page int, size int) (*[]models.ActiveEvent, error) {
 	var ret []models.ActiveEvent
-	req := api.NewRequest(c.Config).SetMethod("GET").SetURL(fmt.Sprintf("/maps")).SetResultStruct(&ret)
+
+	req := api.NewRequest(c.Config).SetMethod("GET").SetURL(fmt.Sprintf("/events/active")).SetResultStruct(&ret)
 
 	if page != 0 {
 		req.SetParam("page", strconv.Itoa(page))
