@@ -1005,3 +1005,14 @@ func (c *ArtifactsMMO) UseConsumable(code string, quantity int) (*models.Consuma
 
 	return &ret, nil
 }
+
+func (c *ArtifactsMMO) Rest() (*models.Rest, error) {
+	var ret models.Rest
+
+	_, err := api.NewRequest(c.Config).SetMethod("POST").SetURL(fmt.Sprintf("/my/%s/action/rest", c.Config.GetUsername())).SetResultStruct(&ret).Run()
+	if err != nil {
+		return nil, err
+	}
+
+	return &ret, nil
+}

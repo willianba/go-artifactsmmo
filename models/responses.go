@@ -176,3 +176,9 @@ type Consumable struct {
 	Item      Item      `json:"item"`
 	Character Character `json:"character"`
 }
+
+type Rest struct {
+	Cooldown   Cooldown  `json:"cooldown"`
+	HpRestored int       `json:"hp_restored"`
+	Character  Character `json:"character"`
+}
