@@ -89,7 +89,7 @@ type TaskCancelled struct {
 
 type TaskRewardData struct {
 	Cooldown  Cooldown   `json:"cooldown"`
-	Reward    TaskReward `json:"reward"`
+	Rewards   TaskReward `json:"rewards"`
 	Character Character  `json:"character"`
 }
 
@@ -104,19 +104,20 @@ type BaseAchievement struct {
 }
 
 type TaskFull struct {
-	Code        string   `json:"code"`
-	Level       int      `json:"level"`
-	Type        TaskType `json:"type"`
-	MinQuantity int      `json:"min_quantity"`
-	MaxQuantity int      `json:"max_quantity"`
-	Skill       string   `json:"skill"`
+	Code        string     `json:"code"`
+	Level       int        `json:"level"`
+	Type        TaskType   `json:"type"`
+	MinQuantity int        `json:"min_quantity"`
+	MaxQuantity int        `json:"max_quantity"`
+	Skill       string     `json:"skill"`
+	Rewards     TaskReward `json:"rewards"`
 }
 
 type TaskRewardFull struct {
-	Code        string  `json:"code"`
-	MinQuantity int     `json:"min_quantity"`
-	MaxQuantity int     `json:"max_quantity"`
-	Odds        float32 `json:"odds"`
+	Code        string `json:"code"`
+	Rate        int    `json:"rate"`
+	MinQuantity int    `json:"min_quantity"`
+	MaxQuantity int    `json:"max_quantity"`
 }
 
 type GEItems struct {

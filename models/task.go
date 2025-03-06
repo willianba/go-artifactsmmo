@@ -8,14 +8,15 @@ const (
 )
 
 type Task struct {
-	Code  string   `json:"code"`
-	Type  TaskType `json:"type"`
-	Total int      `json:"total"`
+	Code    string     `json:"code"`
+	Type    TaskType   `json:"type"`
+	Total   int        `json:"total"`
+	Rewards TaskReward `json:"rewards"`
 }
 
 type TaskReward struct {
-	Code     string `json:"code"`
-	Quantity int    `json:"quantity"`
+	Items []SimpleItem `json:"items"`
+	Gold  int          `json:"gold"`
 }
 
 type TaskTrade SimpleItem
