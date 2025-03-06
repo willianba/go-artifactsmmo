@@ -857,3 +857,15 @@ func (c *ArtifactsMMO) GetTaskReward(code string) (*models.TaskRewardFull, error
 
 	return &ret, nil
 }
+
+func (c *ArtifactsMMO) UseConsumable(code string, quantity int) (*models.Consumable, error) {
+	var ret models.Consumable
+
+	body := models.SimpleItem{Code: code, Quantity: quantity}
+	_, err := api.NewRequest(c.Config).SetMethod("POST").SetURL(fmt.Sprintf("/my/%s/action/use", c.Config.GetUsername())).SetResultStruct(&ret).SetBody(body).Run()
+	if err != nil {
+		return nil, err
+	}
+
+	return &ret, nil
+}

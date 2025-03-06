@@ -160,3 +160,9 @@ type ActiveEvent struct {
 	Expiration   string    `json:"expiration"`
 	CreatedAt    string    `json:"created_at"`
 }
+
+type Consumable struct {
+	Cooldown  Cooldown  `json:"cooldown"`
+	Item      Item      `json:"item"`
+	Character Character `json:"character"`
+}
