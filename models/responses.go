@@ -152,8 +152,9 @@ type SingleItem struct {
 
 type MapSchema Destination
 
-type ActiveEvent struct {
+type Event struct {
 	Name         string    `json:"name"`
+	Code         string    `json:"code"`
 	Map          MapSchema `json:"map"`
 	PreviousSkin string    `json:"previous_skin"`
 	Duration     int       `json:"duration"`
