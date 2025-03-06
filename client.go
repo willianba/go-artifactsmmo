@@ -843,9 +843,13 @@ func (c *ArtifactsMMO) GetTask(code string) (*models.TaskFull, error) {
 }
 
 // Retrieve the details of the tasks rewards
-func (c *ArtifactsMMO) GetTasksRewards(page int, size int) (*[]models.TaskRewardFull, error) {
+func (c *ArtifactsMMO) GetTasksRewards(code string, page int, size int) (*[]models.TaskRewardFull, error) {
 	var ret []models.TaskRewardFull
 	req := api.NewRequest(c.Config).SetMethod("GET").SetURL(fmt.Sprintf("/tasks/rewards")).SetResultStruct(&ret)
+
+	if code != "" {
+		req.SetParam("code", code)
+	}
 
 	if page != 0 {
 		req.SetParam("page", strconv.Itoa(page))
@@ -867,7 +871,6 @@ func (c *ArtifactsMMO) GetTasksRewards(page int, size int) (*[]models.TaskReward
 func (c *ArtifactsMMO) GetTaskReward(code string) (*models.TaskRewardFull, error) {
 	var ret models.TaskRewardFull
 
-	//res, err := api.NewRequest(c.Config, &ret, "GET", fmt.Sprintf("%s/tasks/rewards/%s", apiUrl, code), nil).Run()
 	res, err := api.NewRequest(c.Config).SetMethod("GET").SetURL(fmt.Sprintf("/tasks/rewards/%s", code)).SetResultStruct(&ret).Run()
 	if err != nil {
 		return nil, err
