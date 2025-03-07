@@ -461,8 +461,8 @@ func (c *ArtifactsMMO) GetMyCharactersInfo() (*[]models.Character, error) {
 }
 
 // Retrieve the details of the achievements
-func (c *ArtifactsMMO) GetAchievements(ach_type models.AchievementType, page int, size int) (*[]models.BaseAchievement, error) {
-	var ret []models.BaseAchievement
+func (c *ArtifactsMMO) GetAchievements(ach_type models.AchievementType, page int, size int) (*[]models.Achievement, error) {
+	var ret []models.Achievement
 	req := api.NewRequest(c.Config).SetMethod("GET").SetURL(fmt.Sprintf("/achievements")).SetResultStruct(&ret)
 
 	if ach_type != "" {
@@ -486,8 +486,8 @@ func (c *ArtifactsMMO) GetAchievements(ach_type models.AchievementType, page int
 }
 
 // Retrieve the details of an achievement
-func (c *ArtifactsMMO) GetAchievement(code string) (*models.BaseAchievement, error) {
-	var ret models.BaseAchievement
+func (c *ArtifactsMMO) GetAchievement(code string) (*models.Achievement, error) {
+	var ret models.Achievement
 
 	res, err := api.NewRequest(c.Config).SetMethod("GET").SetURL(fmt.Sprintf("/achievements/%s", code)).SetResultStruct(&ret).Run()
 	if err != nil {

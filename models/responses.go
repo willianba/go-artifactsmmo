@@ -93,14 +93,19 @@ type TaskRewardData struct {
 	Character Character  `json:"character"`
 }
 
-type BaseAchievement struct {
-	Name        string          `json:"name"`
-	Code        string          `json:"code"`
-	Description string          `json:"description"`
-	Points      int             `json:"points"`
-	Type        AchievementType `json:"type"`
-	Target      string          `json:"target"`
-	Total       int             `json:"total"`
+type Achievement struct {
+	Name        string            `json:"name"`
+	Code        string            `json:"code"`
+	Description string            `json:"description"`
+	Points      int               `json:"points"`
+	Type        AchievementType   `json:"type"`
+	Target      string            `json:"target"`
+	Total       int               `json:"total"`
+	Rewards     AchievementReward `json:"rewards"`
+}
+
+type AchievementReward struct {
+	Gold int `json:"gold"`
 }
 
 type TaskFull struct {

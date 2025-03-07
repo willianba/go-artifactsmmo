@@ -11,4 +11,5 @@ const (
 	ARecycling   AchievementType = "recycling"
 	ATask        AchievementType = "task"
 	AOther       AchievementType = "other"
+	AUse         AchievementType = "use"
 )
