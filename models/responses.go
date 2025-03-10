@@ -134,23 +134,23 @@ type GEItems struct {
 }
 
 type Monster struct {
-	Name           string     `json:"name"`
-	Code           string     `json:"code"`
-	Level          int        `json:"level"`
-	Hp             int        `json:"hp"`
-	AttackFire     int        `json:"attack_fire"`
-	AttackEarth    int        `json:"attack_earth"`
-	AttackWater    int        `json:"attack_water"`
-	AttackAir      int        `json:"attack_air"`
-	ResFire        int        `json:"res_fire"`
-	ResEarth       int        `json:"res_earth"`
-	ResWater       int        `json:"res_water"`
-	ResAir         int        `json:"res_air"`
-	CriticalStrike int        `json:"critical_strike"`
-	Effects        []Effect   `json:"effects"`
-	MinGold        int        `json:"min_gold"`
-	MaxGold        int        `json:"max_gold"`
-	Drops          []DropFull `json:"drops"`
+	Name           string       `json:"name"`
+	Code           string       `json:"code"`
+	Level          int          `json:"level"`
+	Hp             int          `json:"hp"`
+	AttackFire     int          `json:"attack_fire"`
+	AttackEarth    int          `json:"attack_earth"`
+	AttackWater    int          `json:"attack_water"`
+	AttackAir      int          `json:"attack_air"`
+	ResFire        int          `json:"res_fire"`
+	ResEarth       int          `json:"res_earth"`
+	ResWater       int          `json:"res_water"`
+	ResAir         int          `json:"res_air"`
+	CriticalStrike int          `json:"critical_strike"`
+	Effects        []ItemEffect `json:"effects"`
+	MinGold        int          `json:"min_gold"`
+	MaxGold        int          `json:"max_gold"`
+	Drops          []DropFull   `json:"drops"`
 }
 
 type SingleItem struct {
@@ -160,7 +160,7 @@ type SingleItem struct {
 
 type MapSchema Destination
 
-type Event struct {
+type ActiveEvent struct {
 	Name         string    `json:"name"`
 	Code         string    `json:"code"`
 	Map          MapSchema `json:"map"`
@@ -168,6 +168,18 @@ type Event struct {
 	Duration     int       `json:"duration"`
 	Expiration   string    `json:"expiration"`
 	CreatedAt    string    `json:"created_at"`
+}
+
+type EventMapSchema Movement
+
+type Event struct {
+	Name     string           `json:"name"`
+	Code     string           `json:"code"`
+	Maps     []EventMapSchema `json:"maps"`
+	Skin     string           `json:"skin"`
+	Duration int              `json:"duration"`
+	Rate     int              `json:"rate"`
+	Content  MapContent       `json:"content"`
 }
 
 type NPCTransactionResponse struct {
@@ -186,4 +198,20 @@ type Rest struct {
 	Cooldown   Cooldown  `json:"cooldown"`
 	HpRestored int       `json:"hp_restored"`
 	Character  Character `json:"character"`
+}
+
+type Announcement struct {
+	Message   string `json:"message"`
+	CreatedAt string `json:"created_at"`
+}
+
+type ServerStatus struct {
+	Status           string         `json:"status"`
+	Version          string         `json:"version"`
+	MaxLevel         int            `json:"max_level"`
+	CharactersOnline int            `json:"characters_online"`
+	ServerTime       int            `json:"server_time"`
+	Announcements    []Announcement `json:"announcements"`
+	LastWipe         string         `json:"last_wipe"`
+	NextWipe         string         `json:"next_wipe"`
 }

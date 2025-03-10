@@ -45,13 +45,20 @@ const (
 	ErrBankFull              ArtifactError = "bank is full"
 	ErrInsufficientGold      ArtifactError = "insufficient gold"
 
-	ErrTooManyItems          ArtifactError = "can't buy or sell that many items at the same time"
-	ErrNoStock               ArtifactError = "no stock for this item"
-	ErrNoItem                ArtifactError = "no item at this price"
-	ErrTransactionOther      ArtifactError = "transaction is already in progress on this item by a another character"
-	ErrTransactionCharacter  ArtifactError = "transaction is already in progress by your character"
+	ErrTransactionOther              ArtifactError = "transaction is already in progress on this order by a another character"
+	ErrTransactionCharacter          ArtifactError = "transaction is already in progress by your character"
+	ErrOrderNotFound                 ArtifactError = "order not found"
+	ErrOfferDoesNotContainItems      ArtifactError = "this offer does not contain as many items"
+	ErrYouCantBuyToYourself          ArtifactError = "you can't buy to yourself"
+	ErrCantCreateOrdersAtTheSameTime ArtifactError = "you can't create more than 100 orders at the same time"
+	ErrCantCancelOrder               ArtifactError = "you can't cancel an order that is not yours"
+	ErrItemCannotBeSold              ArtifactError = "item cannot be sold"
+
 	ErrItemCannotBePurchased ArtifactError = "item cannot be purchased"
-	ErrItemCannotBeSold      ArtifactError = "item cannot be sold"
 	ErrNPCNotFoundOnThisMap  ArtifactError = "NPC not found on this map"
 	ErrNPCNotFound           ArtifactError = "NPC not found"
+
+	ErrUseDifferentPassword ArtifactError = "use a different password"
+	ErrNameAlreadyUsed      ArtifactError = "name already used"
+	ErrMaxCharactersReached ArtifactError = "max characters reached on your account"
 )

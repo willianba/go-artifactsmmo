@@ -23,23 +23,24 @@ const (
 	Mining      SkillType = "mining"
 	WoodCutting SkillType = "woodcutting"
 	Fishing     SkillType = "fishing"
+	Alchemy     SkillType = "alchemy"
 )
 
-type Effect struct {
+type ItemEffect struct {
 	Code  string `json:"code"`
 	Value int    `json:"value"`
 }
 
 type Item struct {
-	Name        string   `json:"name"`
-	Code        string   `json:"code"`
-	Level       int      `json:"level"`
-	Type        string   `json:"type"`
-	SubType     string   `json:"subtype"`
-	Description string   `json:"description"`
-	Effects     []Effect `json:"effects"`
-	Craft       Craft    `json:"craft"`
-	Tradeable   bool     `json:"tradeable"`
+	Name        string       `json:"name"`
+	Code        string       `json:"code"`
+	Level       int          `json:"level"`
+	Type        string       `json:"type"`
+	SubType     string       `json:"subtype"`
+	Description string       `json:"description"`
+	Effects     []ItemEffect `json:"effects"`
+	Craft       Craft        `json:"craft"`
+	Tradeable   bool         `json:"tradeable"`
 }
 
 type Craft struct {
