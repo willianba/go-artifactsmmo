@@ -25,7 +25,7 @@ const (
 	Fishing     SkillType = "fishing"
 )
 
-type Effect struct {
+type SimpleEffect struct {
 	Code  string `json:"code"`
 	Value int    `json:"value"`
 }

@@ -128,23 +128,23 @@ type GEItems struct {
 }
 
 type Monster struct {
-	Name           string     `json:"name"`
-	Code           string     `json:"code"`
-	Level          int        `json:"level"`
-	Hp             int        `json:"hp"`
-	AttackFire     int        `json:"attack_fire"`
-	AttackEarth    int        `json:"attack_earth"`
-	AttackWater    int        `json:"attack_water"`
-	AttackAir      int        `json:"attack_air"`
-	ResFire        int        `json:"res_fire"`
-	ResEarth       int        `json:"res_earth"`
-	ResWater       int        `json:"res_water"`
-	ResAir         int        `json:"res_air"`
-	CriticalStrike int        `json:"critical_strike"`
-	Effects        []Effect   `json:"effects"`
-	MinGold        int        `json:"min_gold"`
-	MaxGold        int        `json:"max_gold"`
-	Drops          []DropFull `json:"drops"`
+	Name           string         `json:"name"`
+	Code           string         `json:"code"`
+	Level          int            `json:"level"`
+	Hp             int            `json:"hp"`
+	AttackFire     int            `json:"attack_fire"`
+	AttackEarth    int            `json:"attack_earth"`
+	AttackWater    int            `json:"attack_water"`
+	AttackAir      int            `json:"attack_air"`
+	ResFire        int            `json:"res_fire"`
+	ResEarth       int            `json:"res_earth"`
+	ResWater       int            `json:"res_water"`
+	ResAir         int            `json:"res_air"`
+	CriticalStrike int            `json:"critical_strike"`
+	Effects        []SimpleEffect `json:"effects"`
+	MinGold        int            `json:"min_gold"`
+	MaxGold        int            `json:"max_gold"`
+	Drops          []DropFull     `json:"drops"`
 }
 
 type SingleItem struct {
