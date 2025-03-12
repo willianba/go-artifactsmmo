@@ -167,7 +167,7 @@ type Rest struct {
 	Character  Character `json:"character"`
 }
 
-type Consumable struct {
+type UseItem struct {
 	Cooldown  Cooldown  `json:"cooldown"`
 	Item      Item      `json:"item"`
 	Character Character `json:"character"`
