@@ -845,7 +845,6 @@ func (c *ArtifactsMMO) GetTasksRewards(page int, size int) (*[]models.TaskReward
 func (c *ArtifactsMMO) GetTaskReward(code string) (*models.TaskRewardFull, error) {
 	var ret models.TaskRewardFull
 
-	// res, err := api.NewRequest(c.Config, &ret, "GET", fmt.Sprintf("%s/tasks/rewards/%s", apiUrl, code), nil).Run()
 	res, err := api.NewRequest(c.Config).SetMethod("GET").SetURL(fmt.Sprintf("/tasks/rewards/%s", code)).SetResultStruct(&ret).Run()
 	if err != nil {
 		return nil, err
