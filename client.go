@@ -867,3 +867,15 @@ func (c *ArtifactsMMO) Rest() (*models.Rest, error) {
 
 	return &ret, nil
 }
+
+func (c *ArtifactsMMO) UseItem(code string, quantity int) (*models.UseItem, error) {
+	var ret models.UseItem
+
+	body := models.SimpleItem{Code: code, Quantity: quantity}
+	_, err := api.NewRequest(c.Config).SetMethod("POST").SetURL(fmt.Sprintf("/my/%s/action/use", c.Config.GetUsername())).SetResultStruct(&ret).SetBody(body).Run()
+	if err != nil {
+		return nil, err
+	}
+
+	return &ret, nil
+}
