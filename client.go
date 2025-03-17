@@ -845,7 +845,7 @@ func (c *ArtifactsMMO) GetTasksRewards(page int, size int) (*[]models.TaskReward
 func (c *ArtifactsMMO) GetTaskReward(code string) (*models.TaskRewardFull, error) {
 	var ret models.TaskRewardFull
 
-	//res, err := api.NewRequest(c.Config, &ret, "GET", fmt.Sprintf("%s/tasks/rewards/%s", apiUrl, code), nil).Run()
+	// res, err := api.NewRequest(c.Config, &ret, "GET", fmt.Sprintf("%s/tasks/rewards/%s", apiUrl, code), nil).Run()
 	res, err := api.NewRequest(c.Config).SetMethod("GET").SetURL(fmt.Sprintf("/tasks/rewards/%s", code)).SetResultStruct(&ret).Run()
 	if err != nil {
 		return nil, err
@@ -862,6 +862,18 @@ func (c *ArtifactsMMO) Rest() (*models.Rest, error) {
 	var ret models.Rest
 
 	_, err := api.NewRequest(c.Config).SetMethod("POST").SetURL(fmt.Sprintf("/my/%s/action/rest", c.Config.GetUsername())).SetResultStruct(&ret).Run()
+	if err != nil {
+		return nil, err
+	}
+
+	return &ret, nil
+}
+
+func (c *ArtifactsMMO) UseItem(code string, quantity int) (*models.UseItem, error) {
+	var ret models.UseItem
+
+	body := models.SimpleItem{Code: code, Quantity: quantity}
+	_, err := api.NewRequest(c.Config).SetMethod("POST").SetURL(fmt.Sprintf("/my/%s/action/use", c.Config.GetUsername())).SetResultStruct(&ret).SetBody(body).Run()
 	if err != nil {
 		return nil, err
 	}

@@ -166,3 +166,9 @@ type Rest struct {
 	HpRestored int       `json:"hp_restored"`
 	Character  Character `json:"character"`
 }
+
+type UseItem struct {
+	Cooldown  Cooldown  `json:"cooldown"`
+	Item      Item      `json:"item"`
+	Character Character `json:"character"`
+}
